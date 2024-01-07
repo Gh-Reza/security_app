@@ -7,7 +7,7 @@ export default function OurServices() {
                         pt-[120px] pb-[90px]
                        "
     >
-      <div className="container px-12 mx-auto">
+      <div className="container mx-auto md:px-12">
         <div className="wrapper">
           <MainSectionTitle title="Our Services" />
           <CardsSlider />

@@ -4,7 +4,7 @@ import BlogSlider from './BlogSlider';
 export default function Blogs() {
   return (
     <div className="py-[120px] relative">
-      <section className="container px-12 mx-auto">
+      <section className="container mx-auto md:px-12">
         <div className="blogs_wrapper">
           <MainSectionTitle title="latest blog" />
         </div>
