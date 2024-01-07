@@ -33,7 +33,7 @@ export default function HeaderTop() {
 
   return (
     <div className="hidden header-top bg-s_gray lg:block">
-      <div className="container">
+      <div className="container md:px-12">
         <div className="py-[12px] px-3">
           <div className="grid grid-cols-2 text-white">
             <div className="left">

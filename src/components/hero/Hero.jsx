@@ -25,7 +25,7 @@ export default function Hero() {
   return (
     <section className="hero_section">
       <div className="flex items-center bg-center bg-no-repeat bg-cover bg-hero h-hero_size">
-        <div className="container">
+        <div className="container md:px-12">
           <div className="flex">
             <div className="px-3 lg:w-8/12">
               <HeroText />

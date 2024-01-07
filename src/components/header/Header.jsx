@@ -10,7 +10,7 @@ function HeaderBottom() {
 
   return (
     <div className="header_bottom_area">
-      <div className="container">
+      <div className="container md:px-12">
         <div className="px-4 lg:px-3">
           <div className="flex items-center">
             <div className="w-1/2 lg:w-1/4">
@@ -26,7 +26,7 @@ function HeaderBottom() {
             </div>
 
             {/* Humberger menu */}
-          {/* <Humberger /> */}
+            {/* <Humberger /> */}
           </div>
         </div>
       </div>
