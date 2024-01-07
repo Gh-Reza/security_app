@@ -1,7 +1,6 @@
 import CircleBtn from '../common/CircleBtn';
 import HeaderTop from './HeaderTop';
 import Logo from './Logo';
-import Humberger from './Humberger';
 import NavbarMenu from './Navbar';
 
 function HeaderBottom() {

@@ -37,7 +37,10 @@ export default function HeaderTop() {
         <div className="py-[12px] px-3">
           <div className="grid grid-cols-2 text-white">
             <div className="left">
-              <p>Have any question ?{phone}</p>
+              <p>
+                Have any question ?
+                {phone}
+              </p>
             </div>
             <div className="left">
               <ul className="socail-top flex items-center justify-end space-x-[25px]">
