@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'pop';
+    src: url('@/assets/font/Poppins-Regular.ttf');
+  }
+
+  @font-face {
+    font-family: 'mont';
+    src: url('@/assets/font/Montserrat-Regular.ttf');
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-heading font-mont font-normal;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-7xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-[28px] md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
+  h6 {
+    @apply text-lg;
+  }
+
+  a,
+  button {
+    @apply cursor-pointer inline-block;
+  }
+
+  a,
+  button,
+  img,
+  input,
+  span {
+    @apply transition-all duration-300;
+  }
+
+  *:focus {
+    @apply outline-none no-underline;
+  }
+
+  input[type='submit'] {
+    @apply cursor-pointer;
+  }
+
+  a:hover {
+    @apply text-brand_color;
+  }
+}
+
+@layer components {
+  .p_section {
+    @apply pt-[30px] pb-[60px] xs:pt-[40px] xs:pb-[70px] md:pt-[60px] md:pb-[80px] xl:pt-[90px] xl:pb-[120px];
+  }
+}
+
+.has-dropdown:hover > .sub-menu {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0;
+  z-index: 999;
+  transition: all 0.3s ease 0s;
+}
+
+.temp {
+  border: 1px solid red;
+}
+
+/* custom arrow keys for the slider  */
+.slick-next,
+.slick-prev {
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  visibility: hidden;
+}
+
+.slick-next::before,
+.slick-prev::before {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 30px;
+  color: #f9b809;
+}
+
+.slick-prev {
+  left: 13px;
+}
+
+.slick-next {
+  right: 13px;
+}
+
+.slider-container:hover .slick-next,
+.slider-container:hover .slick-prev {
+  visibility: visible;
+}
+
+/* client slider custom dot  */
+.slick-dots li.slick-active button::before {
+  color: #f9b809;
+}
