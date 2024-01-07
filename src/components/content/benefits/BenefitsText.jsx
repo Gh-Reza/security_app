@@ -1,4 +1,4 @@
-import CircleBtn from '../common/CircleBtn';
+import CircleBtn from '../../common/CircleBtn';
 
 export default function BenefitsTextContent() {
   return (

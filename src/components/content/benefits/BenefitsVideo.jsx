@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaPlay } from 'react-icons/fa';
-import thumb from '../../assets/images/about/about-01.png';
+import thumb from '../../../assets/images/about/about-01.png';
 import VideoPopUp from './videoPopup/VideoPopup';
 
 export default function BenefitsVid() {

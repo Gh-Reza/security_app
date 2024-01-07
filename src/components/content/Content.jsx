@@ -1,5 +1,5 @@
 import Services from './services/Services';
-import Benefits from '../benefits/Benefits';
+import Benefits from './benefits/Benefits';
 
 export default function Content() {
   return (
