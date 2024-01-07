@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import service01 from '../../assets/images/icon/service-01.png';
-import service02 from '../../assets/images/icon/service-02.png';
-import service03 from '../../assets/images/icon/service-03.png';
-import service04 from '../../assets/images/icon/service-04.png';
+import service01 from '../../../assets/images/icon/service-01.png';
+import service02 from '../../../assets/images/icon/service-02.png';
+import service03 from '../../../assets/images/icon/service-03.png';
+import service04 from '../../../assets/images/icon/service-04.png';
 
 function ServiceCard({
   img, title, info, i,
