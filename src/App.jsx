@@ -1,6 +1,6 @@
 import Header from './components/header/Header';
 import Hero from './components/hero/Hero';
-import Content from './content/Content';
+import Content from './components/content/Content';
 
 function App() {
   return (
