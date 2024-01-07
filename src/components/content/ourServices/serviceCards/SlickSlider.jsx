@@ -98,6 +98,7 @@ function Responsive() {
   };
   return (
     <div className="slider-container">
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Slider {...settings}>{SlidersCollection()}</Slider>
     </div>
   );
