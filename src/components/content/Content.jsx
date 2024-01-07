@@ -3,6 +3,7 @@ import Benefits from './benefits/Benefits';
 import OurServices from './ourServices/OurServices';
 import Quotation from './quotation/Quotation';
 import OurClients from './ourClients/OurClients';
+import Blogs from './blog/Blogs';
 
 export default function Content() {
   return (
@@ -12,6 +13,7 @@ export default function Content() {
       <OurServices />
       <Quotation />
       <OurClients />
+      <Blogs />
     </main>
   );
 }
