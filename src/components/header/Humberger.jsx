@@ -20,9 +20,9 @@ function HumbergerBtn({ onClick }) {
 }
 
 // the menu
-function HumbergerMenu({ onClose }) {
+function HumbergerMenu({ onClose, isOpen }) {
   return (
-    <div className="fixed top-0 left-0 clickable-mainmenu">
+    <div className={`fixed top-0 overflow-hidden transition-transform duration-500 bg-white z-10 left-0 clickable-mainmenu transform ${!isOpen ? '-translate-x-full' : 'translate-x-0'}`}>
       <div className="clickable-mainmenu-icon">
         <button
           aria-label="button"
@@ -134,7 +134,7 @@ export default function Humberger() {
   return (
     <>
       <HumbergerBtn onClick={handleMenuOpen} />
-      {isOpen && <HumbergerMenu onClose={handleMenuClose} />}
+      <HumbergerMenu isOpen={isOpen} onClose={handleMenuClose} />
     </>
   );
 }
@@ -145,4 +145,5 @@ HumbergerBtn.propTypes = {
 
 HumbergerMenu.propTypes = {
   onClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
 };
