@@ -1,14 +1,17 @@
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { MdClose } from 'react-icons/md';
 
 // the button
-function HumbergerBtn() {
+function HumbergerBtn({ onClick }) {
   return (
     <div className="block w-1/2 lg:hidden clickable-menu clickable-mainmenu-active ">
       <button
         aria-label="button"
         type="button"
         className="float-right text-2xl text-[#333]"
+        onClick={onClick}
       >
         <BiMenu />
       </button>
@@ -17,21 +20,22 @@ function HumbergerBtn() {
 }
 
 // the menu
-function HumbergerMenu() {
+function HumbergerMenu({ onClose }) {
   return (
-    <div className="clickable-mainmenu">
+    <div className="fixed top-0 left-0 clickable-mainmenu">
       <div className="clickable-mainmenu-icon">
         <button
           aria-label="button"
           type="button"
           className="clickable-mainmenu-close"
+          onClick={onClose}
         >
           <MdClose />
         </button>
       </div>
 
       <div id="menu" className="text-start clickable-menu-style">
-        <ul>
+        <ul className="">
           <li>
             <a href="index.html">HOME</a>
             <ul>
@@ -118,10 +122,27 @@ function HumbergerMenu() {
 }
 
 export default function Humberger() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleMenuOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
-      <HumbergerBtn />
-      <HumbergerMenu />
+      <HumbergerBtn onClick={handleMenuOpen} />
+      {isOpen && <HumbergerMenu onClose={handleMenuClose} />}
     </>
   );
 }
+
+HumbergerBtn.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+HumbergerMenu.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
