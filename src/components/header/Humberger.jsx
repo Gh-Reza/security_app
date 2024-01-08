@@ -1,3 +1,4 @@
+import { BiArrowBack } from "react-icons/bi"; 
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { BiMenu } from 'react-icons/bi';
@@ -85,18 +86,26 @@ function HumbergerMenu({ onClose, isOpen }) {
   ];
 
   const [items, setItems] = useState(menuItems);
+  const [isSubMenu, setIsSubMenu] = useState(false);
 
   const handleSubMenu = (e, id) => {
     e.preventDefault();
     const newItem = menuItems.find((item) => item.id === id);
     if (newItem.submenu) {
       setItems(newItem.submenu);
+      setIsSubMenu(true);
     }
     // FIXME: should be handled by react-router-dom
     // else {
     //   window.location.href = newItem.url;
     // }
   };
+
+  const handleOnBack = (e) => {
+    e.preventDefault();
+    setItems(menuItems);
+    setIsSubMenu(false);
+  }
 
   return (
     <div className={`fixed top-0 overflow-hidden transition-transform duration-500 bg-white z-10 left-0 clickable-mainmenu transform ${!isOpen ? '-translate-x-full' : 'translate-x-0'}`}>
@@ -113,6 +122,13 @@ function HumbergerMenu({ onClose, isOpen }) {
 
       <div id="menu" className="text-start clickable-menu-style">
         <ul className="">
+          {isSubMenu && (
+            <li>
+              <button onClick={handleOnBack} aria-label="back-button" type="button">
+                <BiArrowBack />
+              </button>
+            </li>
+          )}
           {items.map((item) => (
             <li key={item.id}>
               <a onClick={(e) => handleSubMenu(e, item.id)} href={item.url}>{item.title}</a>
