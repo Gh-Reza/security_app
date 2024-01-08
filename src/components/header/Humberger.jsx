@@ -1,12 +1,13 @@
-import { GrLinkedinOption } from "react-icons/gr"; 
-import { FaVimeoV } from "react-icons/fa"; 
-import { CgFacebook } from "react-icons/cg"; 
+import { GrLinkedinOption } from 'react-icons/gr';
+import { FaVimeoV } from 'react-icons/fa';
+import { CgFacebook } from 'react-icons/cg';
 import { AiOutlineTwitter } from 'react-icons/ai';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from 'react-icons/io';
 import { BiMenu } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
+import CircleBtn from '../common/CircleBtn';
 
 // the button
 function HumbergerBtn({ onClick }) {
@@ -180,10 +181,11 @@ function HumbergerMenu({ onClose, isOpen }) {
 
       <div className="text-center header-btn">
         <a
+          aria-label="Buy now"
           className="btn-circle btn-transparent btn"
           href="https://1.envato.market/62543"
         >
-          Buy now
+          <CircleBtn text="Buy now" link="#" />
         </a>
       </div>
     </div>
