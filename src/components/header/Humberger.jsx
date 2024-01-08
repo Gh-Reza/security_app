@@ -21,6 +21,83 @@ function HumbergerBtn({ onClick }) {
 
 // the menu
 function HumbergerMenu({ onClose, isOpen }) {
+  const menuItems = [
+    {
+      id: 1,
+      title: 'Home',
+      url: '/',
+      submenu: [
+        {
+          title: 'Home one',
+          url: '/',
+        },
+        {
+          title: 'Boxed Layout Page',
+          url: '/boxed-layout',
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: 'About',
+      url: '/about',
+    },
+    {
+      id: 3,
+      title: 'Services',
+      url: '/services',
+      submenu: [
+        {
+          title: 'Service Page',
+          url: '/services',
+        },
+        {
+          title: 'Service Details Page',
+          url: '/service-details',
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: 'Gallery',
+      url: '/gallery',
+    },
+    {
+      id: 5,
+      title: 'Team',
+      url: '/team',
+    },
+    {
+      id: 6,
+      title: 'Blog',
+      url: '/blog',
+      submenu: [
+        {
+          title: 'Blog page',
+          url: '/blog',
+        },
+        {
+          title: 'Blog Details Page',
+          url: '/blog-details',
+        },
+      ],
+    },
+  ];
+
+  const [items, setItems] = useState(menuItems);
+
+  const handleSubMenu = (e, id) => {
+    e.preventDefault();
+    const newItem = menuItems.find((item) => item.id === id);
+    if (newItem.submenu) {
+      setItems(newItem.submenu);
+    }
+    // FIXME: should be handled by react-router-dom
+    // else {
+    //   window.location.href = newItem.url;
+    // }
+  };
+
   return (
     <div className={`fixed top-0 overflow-hidden transition-transform duration-500 bg-white z-10 left-0 clickable-mainmenu transform ${!isOpen ? '-translate-x-full' : 'translate-x-0'}`}>
       <div className="clickable-mainmenu-icon">
@@ -36,49 +113,11 @@ function HumbergerMenu({ onClose, isOpen }) {
 
       <div id="menu" className="text-start clickable-menu-style">
         <ul className="">
-          <li>
-            <a href="index.html">HOME</a>
-            <ul>
-              <li>
-                <a href="index.html">Home one</a>
-              </li>
-              <li>
-                <a href="boxed-layout.html">Boxed Layout Page</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="about.html">ABOUT</a>
-          </li>
-          <li>
-            <a href="service.html">SERVICES</a>
-            <ul>
-              <li>
-                <a href="service.html">Service Page</a>
-              </li>
-              <li>
-                <a href="service-details.html">Service Details Page</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="gallery.html">GALLERY</a>
-          </li>
-          <li>
-            <a href="team.html">TEAM</a>
-          </li>
-          <li>
-            {/* FIXME:  */}
-            <a href="https//...">BLOG</a>
-            <ul>
-              <li>
-                <a href="blog.html">Blog page</a>
-              </li>
-              <li>
-                <a href="blog-details.html">Blog Details Page</a>
-              </li>
-            </ul>
-          </li>
+          {items.map((item) => (
+            <li key={item.id}>
+              <a onClick={(e) => handleSubMenu(e, item.id)} href={item.url}>{item.title}</a>
+            </li>
+          ))}
         </ul>
       </div>
 
