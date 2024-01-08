@@ -1,3 +1,7 @@
+import { GrLinkedinOption } from "react-icons/gr"; 
+import { FaVimeoV } from "react-icons/fa"; 
+import { CgFacebook } from "react-icons/cg"; 
+import { AiOutlineTwitter } from 'react-icons/ai';
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from 'react-icons/io';
 import { BiMenu } from 'react-icons/bi';
 import PropTypes from 'prop-types';
@@ -148,27 +152,27 @@ function HumbergerMenu({ onClose, isOpen }) {
         </div>
 
       </div>
-      <div className="mobile-more-info">
+      <div className="text-center mobile-more-info">
         <p>Have any question ? +215 2145 2154</p>
-        <ul className="socail-top">
+        <ul className="flex justify-center mt-6 space-x-4 socail-top">
           <li>
             <a aria-label="social" href="https/..">
-              <i className="zmdi zmdi-facebook" />
+              <CgFacebook />
             </a>
           </li>
           <li>
             <a aria-label="social" href="https/">
-              <i className="zmdi zmdi-twitter" />
+              <AiOutlineTwitter />
             </a>
           </li>
           <li>
             <a aria-label="social" href="https">
-              <i className="zmdi zmdi-vimeo" />
+              <FaVimeoV />
             </a>
           </li>
           <li>
             <a aria-label="social" href="https">
-              <i className="zmdi zmdi-linkedin" />
+              <GrLinkedinOption />
             </a>
           </li>
         </ul>
