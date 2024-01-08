@@ -2,6 +2,7 @@ import CircleBtn from '../common/CircleBtn';
 import HeaderTop from './HeaderTop';
 import Logo from './Logo';
 import NavbarMenu from './Navbar';
+import Humberger from './Humberger';
 
 function HeaderBottom() {
   // 1: logo
@@ -25,7 +26,7 @@ function HeaderBottom() {
             </div>
 
             {/* Humberger menu */}
-            {/* <Humberger /> */}
+            <Humberger />
           </div>
         </div>
       </div>

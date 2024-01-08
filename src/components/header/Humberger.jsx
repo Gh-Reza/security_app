@@ -1,14 +1,23 @@
+import { GrLinkedinOption } from 'react-icons/gr';
+import { FaVimeoV } from 'react-icons/fa';
+import { CgFacebook } from 'react-icons/cg';
+import { AiOutlineTwitter } from 'react-icons/ai';
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from 'react-icons/io';
 import { BiMenu } from 'react-icons/bi';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { MdClose } from 'react-icons/md';
+import CircleBtn from '../common/CircleBtn';
 
 // the button
-function HumbergerBtn() {
+function HumbergerBtn({ onClick }) {
   return (
     <div className="block w-1/2 lg:hidden clickable-menu clickable-mainmenu-active ">
       <button
         aria-label="button"
         type="button"
         className="float-right text-2xl text-[#333]"
+        onClick={onClick}
       >
         <BiMenu />
       </button>
@@ -17,89 +26,154 @@ function HumbergerBtn() {
 }
 
 // the menu
-function HumbergerMenu() {
+function HumbergerMenu({ onClose, isOpen }) {
+  const menuItems = [
+    {
+      id: 1,
+      title: 'Home',
+      url: '/',
+      submenu: [
+        {
+          title: 'Home one',
+          url: '/',
+        },
+        {
+          title: 'Boxed Layout Page',
+          url: '/boxed-layout',
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: 'About',
+      url: '/about',
+    },
+    {
+      id: 3,
+      title: 'Services',
+      url: '/services',
+      submenu: [
+        {
+          title: 'Service Page',
+          url: '/services',
+        },
+        {
+          title: 'Service Details Page',
+          url: '/service-details',
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: 'Gallery',
+      url: '/gallery',
+    },
+    {
+      id: 5,
+      title: 'Team',
+      url: '/team',
+    },
+    {
+      id: 6,
+      title: 'Blog',
+      url: '/blog',
+      submenu: [
+        {
+          title: 'Blog page',
+          url: '/blog',
+        },
+        {
+          title: 'Blog Details Page',
+          url: '/blog-details',
+        },
+      ],
+    },
+  ];
+
+  const [items, setItems] = useState(menuItems);
+  const [isSubMenu, setIsSubMenu] = useState(false);
+
+  // Handle submenu
+  const handleSubMenu = (e, id) => {
+    e.preventDefault();
+    const newItem = menuItems.find((item) => item.id === id);
+    if (newItem.submenu) {
+      setItems(newItem.submenu);
+      setIsSubMenu(true);
+    }
+    // FIXME: should be handled by react-router-dom
+    // else {
+    //   window.location.href = newItem.url;
+    // }
+  };
+
+  // Handle back button
+  const handleOnBack = (e) => {
+    e.preventDefault();
+    setItems(menuItems);
+    setIsSubMenu(false);
+  };
+
   return (
-    <div className="clickable-mainmenu">
-      <div className="clickable-mainmenu-icon">
-        <button
-          aria-label="button"
-          type="button"
-          className="clickable-mainmenu-close"
-        >
-          <MdClose />
-        </button>
-      </div>
+    <div className={`flex flex-col justify-between h-full fixed top-0 p-8 overflow-hidden transition-transform duration-500 bg-white z-10 left-0 clickable-mainmenu transform ${!isOpen ? '-translate-x-full' : 'translate-x-0'}`}>
+      <div>
+        <div className="mb-6 clickable-mainmenu-icon">
+          <button
+            aria-label="button"
+            type="button"
+            className="clickable-mainmenu-close"
+            onClick={() => {
+              setItems(menuItems);
+              setIsSubMenu(false);
+              onClose();
+            }}
+          >
+            <MdClose size={25} />
+          </button>
+        </div>
 
-      <div id="menu" className="text-start clickable-menu-style">
-        <ul>
-          <li>
-            <a href="index.html">HOME</a>
-            <ul>
+        <div id="menu" className="text-start clickable-menu-style">
+          <ul>
+            {isSubMenu && (
               <li>
-                <a href="index.html">Home one</a>
+                <button onClick={handleOnBack} aria-label="back-button" type="button">
+                  <IoIosArrowRoundBack size={23} color="gray" className="hover:text-black" />
+                </button>
               </li>
-              <li>
-                <a href="boxed-layout.html">Boxed Layout Page</a>
+            )}
+            {items.map((item) => (
+              <li key={item.id}>
+                <a className={`flex justify-between p-3 hover:bg-blue-100 ${!isSubMenu && 'uppercase'}`} onClick={(e) => handleSubMenu(e, item.id)} href={item.url}>
+                  {item.title}
+                  {item.submenu && <IoIosArrowRoundForward size={23} />}
+                </a>
               </li>
-            </ul>
-          </li>
-          <li>
-            <a href="about.html">ABOUT</a>
-          </li>
-          <li>
-            <a href="service.html">SERVICES</a>
-            <ul>
-              <li>
-                <a href="service.html">Service Page</a>
-              </li>
-              <li>
-                <a href="service-details.html">Service Details Page</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="gallery.html">GALLERY</a>
-          </li>
-          <li>
-            <a href="team.html">TEAM</a>
-          </li>
-          <li>
-            {/* FIXME:  */}
-            <a href="https//...">BLOG</a>
-            <ul>
-              <li>
-                <a href="blog.html">Blog page</a>
-              </li>
-              <li>
-                <a href="blog-details.html">Blog Details Page</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+            ))}
+          </ul>
+        </div>
 
-      <div className="mobile-more-info">
+      </div>
+      <div className="text-center mobile-more-info">
         <p>Have any question ? +215 2145 2154</p>
-        <ul className="socail-top">
+        <ul className="flex justify-center mt-6 space-x-4 socail-top">
           <li>
             <a aria-label="social" href="https/..">
-              {/* FIXME: empty elements must be self contained. AND fix the followings aswell */}
-              <i className="zmdi zmdi-facebook" />
+              <CgFacebook />
             </a>
           </li>
           <li>
             <a aria-label="social" href="https/">
-              <i className="zmdi zmdi-twitter" />
+              <AiOutlineTwitter />
             </a>
           </li>
           <li>
             <a aria-label="social" href="https">
-              <i className="zmdi zmdi-vimeo" />
+              <FaVimeoV />
             </a>
           </li>
           <li>
             <a aria-label="social" href="https">
-              <i className="zmdi zmdi-linkedin" />
+              <GrLinkedinOption />
             </a>
           </li>
         </ul>
@@ -107,10 +181,11 @@ function HumbergerMenu() {
 
       <div className="text-center header-btn">
         <a
+          aria-label="Buy now"
           className="btn-circle btn-transparent btn"
           href="https://1.envato.market/62543"
         >
-          Buy now
+          <CircleBtn text="Buy now" link="#" />
         </a>
       </div>
     </div>
@@ -118,10 +193,28 @@ function HumbergerMenu() {
 }
 
 export default function Humberger() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleMenuOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
-      <HumbergerBtn />
-      <HumbergerMenu />
+      <HumbergerBtn onClick={handleMenuOpen} />
+      <HumbergerMenu isOpen={isOpen} onClose={handleMenuClose} />
     </>
   );
 }
+
+HumbergerBtn.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
+HumbergerMenu.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+};
