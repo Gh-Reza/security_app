@@ -1,4 +1,6 @@
 // import icon1 from '../../../assets/images/icon/c-01.png';
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 
 export default function ProjectCount() {
   const STATISTICS = [
@@ -38,7 +40,14 @@ export default function ProjectCount() {
                 <div className="flex justify-center">
                   <img src={item.icon} alt={item.text} className="" />
                 </div>
-                <p className="text-4xl font-bold">{item.count}</p>
+                {/* <p className="text-4xl font-bold">{item.count}</p> */}
+                <CountUp start={0} end={item.count} duration={3}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span className="text-3xl font-bold" ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp>
                 <p className="text-lg font-semibold">{item.text}</p>
               </li>
             ))}
