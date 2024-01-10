@@ -1,4 +1,5 @@
 // import icon1 from '../../../assets/images/icon/c-01.png';
+import { useState } from 'react';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 
@@ -30,6 +31,8 @@ export default function ProjectCount() {
     },
   ];
 
+  const [hasViewed, setHasViewed] = useState(false);
+
   return (
     <section className="relative py-24 bg-black bg-commonHero project_count_section">
       <div className="black-overlay">
@@ -43,7 +46,16 @@ export default function ProjectCount() {
                 {/* <p className="text-4xl font-bold">{item.count}</p> */}
                 <CountUp start={0} end={item.count} duration={3}>
                   {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
+                    <VisibilitySensor
+                      active={!hasViewed}
+                      onChange={(isVisible) => {
+                        if (isVisible && !hasViewed) {
+                          start();
+                          setHasViewed(true);
+                        }
+                      }}
+                      delayedCall
+                    >
                       <span className="text-3xl font-bold" ref={countUpRef} />
                     </VisibilitySensor>
                   )}
