@@ -1,7 +1,13 @@
+import CommonHero from '../hero/CommonHero';
+import Benefits from '../content/benefits/Benefits';
+import ProjectCount from '../content/projectCount/ProjectCount';
+
 export default function About() {
   return (
-    <main className="relative page_content">
-      <h1>About</h1>
-    </main>
+    <div>
+      <CommonHero text="About" />
+      <Benefits />
+      <ProjectCount />
+    </div>
   );
 }

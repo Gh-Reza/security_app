@@ -76,6 +76,10 @@
   .p_section {
     @apply pt-[30px] pb-[60px] xs:pt-[40px] xs:pb-[70px] md:pt-[60px] md:pb-[80px] xl:pt-[90px] xl:pb-[120px];
   }
+
+  .custom_underline {
+    @apply after:border after:w-12 after:m-auto;
+  }
 }
 
 .has-dropdown:hover > .sub-menu {
@@ -125,4 +129,15 @@
 /* client slider custom dot  */
 .slick-dots li.slick-active button::before {
   color: #f9b809;
+}
+
+.black-overlay::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
 }

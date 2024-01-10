@@ -17,6 +17,7 @@ export default {
 
       backgroundImage: {
         hero: 'url(./src/assets/images/hero/hero-1.jpg)',
+        commonHero: 'url(./public/assets/images/counter-bg.jpg)',
         // 'hero2' : 'url(@/assets/images/hero/hero-1.jpg)',
       },
       height: {
