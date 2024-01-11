@@ -25,7 +25,7 @@ export default function SideNav() {
   ];
 
   return (
-    <div className="container w-1/3 md:px-6">
+    <div className="container w-full md:w-1/3 md:px-6">
       <ul className="flex flex-col space-y-2">
         {navItems.map((item) => (
           <li key={item.id} className="">

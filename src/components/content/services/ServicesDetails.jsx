@@ -7,7 +7,7 @@ export default function ServiceDetails() {
   };
 
   return (
-    <div className="container px-6">
+    <div className="container md:px-6">
       <div>
         <img src={details.img} alt={details.title} className="w-full" />
       </div>

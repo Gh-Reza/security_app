@@ -7,7 +7,7 @@ export default function ServicesDetails() {
     <section className="bg-gray-50">
       <CommonHero text="Services Details" />
       <div className="container py-24 md:px-12">
-        <div className="flex">
+        <div className="flex flex-col space-y-5 md:flex-row">
           <SideNav />
           <ServiceDetails />
         </div>
