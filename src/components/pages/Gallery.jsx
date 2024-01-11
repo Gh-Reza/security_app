@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import VisibilitySensor from 'react-visibility-sensor';
 import CommonHero from '../hero/CommonHero';
+import { motion } from 'framer-motion';
 import CommonButton from '../common/CommonBtn';
 
 export default function Gallery() {
@@ -29,6 +32,8 @@ export default function Gallery() {
     },
   ];
 
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <div className="container mx-auto md:px-12">
       <CommonHero text="Gallery" />
@@ -38,10 +43,33 @@ export default function Gallery() {
         <CommonButton text="DESIGN" link="" />
         <CommonButton text="GRAPHIC" link="" />
       </div>
-      <ul className="flex flex-col items-center justify-center gap-6 py-16 md:grid md:grid-cols-2 lg:grid-cols-3">
+      <ul className="flex flex-col items-center justify-center gap-6 py-16 transition-all duration-500 ease-in-out md:grid md:grid-cols-2 lg:grid-cols-3">
         {images.map((image) => (
           <li key={image.id}>
-            <img src={image.src} alt="" />
+            <VisibilitySensor
+              partialVisibility
+              onChange={(isVisible) => {
+                if (isVisible) {
+                  setIsVisible(true);
+                }
+              }}
+            >
+              <motion.img
+                src={image.src}
+                alt=""
+                animate={isVisible ? {
+                  scale: [1, 1.2, 1],
+                  translateX: ['0%', '10%', '0%'],
+                  translateY: ['0%', '5%', '0%'],
+                  opacity: [0, 0.5, 1],
+                } : {}}
+                transition={{
+                  duration: Math.random() * 2,
+                  loop: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
+            </VisibilitySensor>
           </li>
         ))}
       </ul>
