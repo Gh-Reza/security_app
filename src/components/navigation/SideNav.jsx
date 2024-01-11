@@ -25,11 +25,11 @@ export default function SideNav() {
   ];
 
   return (
-    <div className="container py-24 md:px-12">
+    <div className="container w-1/3 md:px-6">
       <ul className="flex flex-col space-y-2">
         {navItems.map((item) => (
           <li key={item.id} className="">
-            <NavLink to={item.link} className="w-full p-6 text-center bg-gray-100 cursor-pointer" activeClassName="text-blue-500">{item.title}</NavLink>
+            <NavLink to={item.link} className="w-full p-6 text-center bg-gray-100 cursor-pointer">{item.title}</NavLink>
           </li>
         ))}
       </ul>
