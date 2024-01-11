@@ -66,7 +66,7 @@ export default function Services() {
   return (
     <section className="bg-gray-50">
       <CommonHero text="Services" />
-      <div className="py-24 wrapper">
+      <div className="container py-24 wrapper md:px-12">
         <MainSectionTitle title="Our Services" />
         <div className="grid md:grid-cols-2 lg:grid-cols-3">
           {cardCollectionInfo.map((card) => (
