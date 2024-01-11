@@ -34,7 +34,7 @@ export default function ProjectCount() {
   const [hasViewed, setHasViewed] = useState(false);
 
   return (
-    <section className="relative py-24 bg-black bg-commonHero project_count_section">
+    <section className="relative py-24 bg-black bg-projectCounter project_count_section">
       <div className="black-overlay">
         <div className="container relative md:px-12">
           <ul className="flex text-white justify-evenly">
