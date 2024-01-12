@@ -5,44 +5,69 @@ import CommonHero from '../hero/CommonHero';
 import CommonButton from '../common/CommonBtn';
 
 export default function Gallery() {
-  const images = [
+  const allImages = [
     {
       id: 1,
       src: '/assets/images/services/service-01.jpg',
+      tags: ['brand', 'design'],
     },
     {
       id: 2,
       src: '/assets/images/services/service-02.jpg',
+      tags: ['brand', 'graphic'],
     },
     {
       id: 3,
       src: '/assets/images/services/service-03.jpg',
+      tags: ['brand', 'design', 'graphic'],
     },
     {
       id: 4,
       src: '/assets/images/services/service-04.jpg',
+      tags: ['graphic', 'design'],
     },
     {
       id: 5,
       src: '/assets/images/services/service-05.jpg',
+      tags: ['brand'],
     },
     {
       id: 6,
       src: '/assets/images/services/service-06.jpg',
+      tags: ['brand', 'design'],
     },
   ];
 
+  const [images, setImages] = useState(allImages);
+
   const [isVisible, setIsVisible] = useState(false);
+
+  const handleOnClick = (text) => {
+    if (text === 'ALL') {
+      setImages(allImages);
+    } else {
+      const filteredImages = allImages.filter((image) => image.tags.includes(text.toLowerCase()));
+      setImages(filteredImages);
+    }
+  };
+
+  const BUTTONS = [
+    { text: 'ALL' },
+    { text: 'BRAND' },
+    { text: 'DESIGN' },
+    { text: 'GRAPHIC' },
+  ];
 
   return (
     <div className="container mx-auto md:px-12">
       <CommonHero text="Gallery" />
-      <div className="flex flex-wrap justify-center gap-4 pt-24 mx-auto md:w-2/3">
-        <CommonButton text="ALL" link="" />
-        <CommonButton text="BRAND" link="" />
-        <CommonButton text="DESIGN" link="" />
-        <CommonButton text="GRAPHIC" link="" />
-      </div>
+      <ul className="flex flex-wrap justify-center gap-4 pt-24 mx-auto md:w-2/3">
+        {BUTTONS.map((btn) => (
+          <li key={btn.text}>
+            <CommonButton text={btn.text} onClick={handleOnClick} />
+          </li>
+        ))}
+      </ul>
       <ul className="flex flex-col items-center justify-center gap-6 py-16 transition-all duration-500 ease-in-out md:grid md:grid-cols-2 lg:grid-cols-3">
         {images.map((image) => (
           <li key={image.id}>

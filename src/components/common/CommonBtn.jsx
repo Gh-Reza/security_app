@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
-export default function CommonButton({ text, link }) {
+export default function CommonButton({ text, link, onClick }) {
   return (
     <a
+      onClick={() => { onClick(text); }}
       className={`px-[30px] py-[10px] border
                       border-[#1d2736] rounded-[50px]
                       text-white inline-block text-center 
@@ -21,4 +22,5 @@ export default function CommonButton({ text, link }) {
 CommonButton.propTypes = {
   text: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
