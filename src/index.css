@@ -144,8 +144,9 @@
 
 .side-nav .active {
   background-color: #f9b809;
+  color: #fff;
 }
 
 .side-nav .active:hover {
-  color: black;
+  color: #fff;
 }
