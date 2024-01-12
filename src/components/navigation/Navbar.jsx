@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 function NavItemCreator(arrItems, isSub = false) {
   const ajaxNavItems = arrItems.map((nav, i) => {
     const checker = nav.sub_nav && nav.sub_nav.length >= 1;
@@ -7,9 +9,9 @@ function NavItemCreator(arrItems, isSub = false) {
 
     return (
       <li key={`item${i + 1}`} className={`${liClass}`}>
-        <a className={`${aClass} font-semibold font-mont`} href={nav.src}>
+        <NavLink className={`${aClass} font-semibold font-mont`} to={nav.src}>
           {aText}
-        </a>
+        </NavLink>
         {checker && (
           <div
             className="sub-menu absolute left-0 top-[100%]
@@ -37,19 +39,19 @@ export default function NavbarMenu() {
         {
           label: 'Home One',
           sub_nav: [],
-          src: '#',
+          src: '/',
         },
         {
           label: 'Boxed layoud Page',
           sub_nav: [],
-          src: '#',
+          src: '/',
         },
       ],
-      src: '#',
+      src: '/',
     },
     {
       label: 'ABOUT',
-      src: '#',
+      src: '/about',
     },
     {
       label: 'SERVICES',
@@ -57,23 +59,23 @@ export default function NavbarMenu() {
         {
           label: 'Service Page',
           sub_nav: [],
-          src: '#',
+          src: '/services',
         },
         {
           label: 'Service Details Page',
           sub_nav: [],
-          src: '#',
+          src: '/services-details',
         },
       ],
-      src: '#',
+      src: '/services',
     },
     {
       label: 'Gallery',
-      src: '#',
+      src: '/gallery',
     },
     {
       label: 'Team',
-      src: '#',
+      src: '/team',
     },
     {
       label: 'Blog',
@@ -81,19 +83,19 @@ export default function NavbarMenu() {
         {
           label: 'Blog Page',
           sub_nav: [],
-          src: '#',
+          src: '/blog',
         },
         {
           label: 'Blog Details Page',
           sub_nav: [],
-          src: '#',
+          src: '/blog-details',
         },
       ],
-      src: '#',
+      src: '/blog',
     },
     {
       label: 'Contact',
-      src: '#',
+      src: '/contact',
     },
   ];
 
