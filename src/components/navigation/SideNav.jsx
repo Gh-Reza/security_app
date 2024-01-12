@@ -25,11 +25,16 @@ export default function SideNav() {
   ];
 
   return (
-    <div className="container w-full md:w-1/3 md:px-6">
+    <div className="container w-full md:w-1/3 md:px-6 side-nav">
       <ul className="flex flex-col space-y-2">
         {navItems.map((item) => (
           <li key={item.id} className="">
-            <NavLink to={item.link} className="w-full p-6 text-center bg-gray-100 cursor-pointer">{item.title}</NavLink>
+            {item.link === '' ? (
+              <NavLink to={item.link} end className="w-full p-6 text-center bg-gray-100 cursor-pointer">{item.title}</NavLink>
+            )
+              : (
+                <NavLink to={item.link} className="w-full p-6 text-center bg-gray-100 cursor-pointer">{item.title}</NavLink>
+              )}
           </li>
         ))}
       </ul>
