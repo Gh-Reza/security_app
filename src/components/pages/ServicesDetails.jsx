@@ -1,6 +1,6 @@
+import { Outlet } from 'react-router-dom';
 import CommonHero from '../hero/CommonHero';
 import SideNav from '../navigation/SideNav';
-import ServiceDetails from '../content/services/ServicesDetails';
 
 export default function ServicesDetails() {
   return (
@@ -9,7 +9,7 @@ export default function ServicesDetails() {
       <div className="container py-24 md:px-12">
         <div className="flex flex-col space-y-5 md:flex-row">
           <SideNav />
-          <ServiceDetails />
+          <Outlet />
         </div>
       </div>
     </section>

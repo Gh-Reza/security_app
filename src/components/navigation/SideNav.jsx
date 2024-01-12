@@ -5,22 +5,22 @@ export default function SideNav() {
     {
       id: 1,
       title: 'Private Security',
-      link: '/services-details/',
+      link: '',
     },
     {
       id: 2,
       title: 'Transport Security',
-      link: '/services-details/transport-security',
+      link: 'transport-security',
     },
     {
       id: 3,
       title: 'Home Security',
-      link: '/services-details/home-security',
+      link: 'home-security',
     },
     {
       id: 4,
       title: 'Self Security',
-      link: '/services-details/self-security',
+      link: 'self-security',
     },
   ];
 

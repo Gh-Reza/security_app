@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import CommonHero from '../hero/CommonHero';
-import { motion } from 'framer-motion';
 import CommonButton from '../common/CommonBtn';
 
 export default function Gallery() {

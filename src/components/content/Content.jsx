@@ -8,53 +8,26 @@ import Blog from '../pages/Blog';
 import BlogDetails from '../pages/BlogDetails';
 import Team from '../pages/Team';
 import Contact from '../pages/Contact';
+import ServiceDetails from './services/ServicesDetails';
 
 export default function Content() {
-  const ROUTES = [
-    {
-      path: '/',
-      element: <Home />,
-    },
-    {
-      path: '/about',
-      element: <About />,
-    },
-    {
-      path: '/services',
-      element: <Services />,
-    },
-    {
-      path: '/services-details',
-      element: <ServicesDetails />,
-    },
-    {
-      path: '/gallery',
-      element: <Gallery />,
-    },
-    {
-      path: '/blog',
-      element: <Blog />,
-    },
-    {
-      path: '/blog-details',
-      element: <BlogDetails />,
-    },
-    {
-      path: '/team',
-      element: <Team />,
-    },
-    {
-      path: '/contact',
-      element: <Contact />,
-    },
-  ];
-
   return (
     <main className="relative page_content">
       <Routes>
-        {ROUTES.map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services-details" element={<ServicesDetails />}>
+          <Route index element={<ServiceDetails title="Private Security" />} />
+          <Route path="transport-security" element={<ServiceDetails title="Transport Security" />} />
+          <Route path="home-security" element={<ServiceDetails title="Home Security" />} />
+          <Route path="self-security" element={<ServiceDetails title="Self Security" />} />
+        </Route>
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </main>
   );
