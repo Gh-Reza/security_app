@@ -37,7 +37,7 @@ export default function ProjectCount() {
     <section className="relative py-24 bg-black bg-projectCounter project_count_section">
       <div className="black-overlay">
         <div className="container relative md:px-12">
-          <ul className="flex text-white justify-evenly">
+          <ul className="flex flex-col text-white gap-y-12 md:flex-row justify-evenly">
             {STATISTICS.map((item) => (
               <li key={item.id} className="z-20 flex flex-col justify-center space-y-2 text-center custom_underline after:mt-2">
                 <div className="flex justify-center">
