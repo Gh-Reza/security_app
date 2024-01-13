@@ -1,10 +1,7 @@
-// import icon1 from '../../../assets/images/icon/c-01.png';
-import { useState } from 'react';
-import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
+import ProjectCountElem from './ProjectCountElem';
 
 export default function ProjectCount() {
-  const STATISTICS = [
+  const statistics = [
     {
       id: 1,
       icon: './assets/icon/fun-01.png',
@@ -31,36 +28,14 @@ export default function ProjectCount() {
     },
   ];
 
-  const [hasViewed, setHasViewed] = useState(false);
-
   return (
     <section className="relative py-24 bg-black bg-projectCounter project_count_section">
       <div className="black-overlay">
         <div className="container relative md:px-12">
           <ul className="flex flex-col text-white gap-y-12 md:flex-row justify-evenly">
-            {STATISTICS.map((item) => (
+            {statistics.map((item) => (
               <li key={item.id} className="z-20 flex flex-col justify-center space-y-2 text-center custom_underline after:mt-2">
-                <div className="flex justify-center">
-                  <img src={item.icon} alt={item.text} className="" />
-                </div>
-                {/* <p className="text-4xl font-bold">{item.count}</p> */}
-                <CountUp start={0} end={item.count} duration={3}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor
-                      active={!hasViewed}
-                      onChange={(isVisible) => {
-                        if (isVisible && !hasViewed) {
-                          start();
-                          setHasViewed(true);
-                        }
-                      }}
-                      delayedCall
-                    >
-                      <span className="text-3xl font-bold" ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp>
-                <p className="text-lg font-semibold">{item.text}</p>
+                <ProjectCountElem item={item} />
               </li>
             ))}
           </ul>
