@@ -7,7 +7,6 @@ function HeroText() {
         We Provide The Best
       </h5>
       <h1 className="mb-[10px] text-white font-bold animate-fade-up animate-delay-[1s] animate-duration-1000 animate-fill-both">
-        {/* FIXME: the {} should be placed in nex line */}
         Security Service
         {' '}
       </h1>
